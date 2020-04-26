@@ -2,7 +2,7 @@ import logging
 
 import click
 
-from src.picom import pngquant
+from . import pngquant
 
 
 class QualityInteger(click.ParamType):
