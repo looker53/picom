@@ -24,6 +24,7 @@ class QualityInteger(click.ParamType):
 @click.option('--force', '-f', '--violent', is_flag=True, help='强制执行')
 @click.option('--quality', '-q', type=QualityInteger(), help='压缩质量')
 def cli(fp, force, quality):
+    logging.basicConfig(level=logging.INFO, format='%(message)s')
     logging.info(f"正在优化:{fp}...")
     pngquant.pngquant_compress(fp, force, quality)
     logging.info(f"优化完成:{fp}!请打开文件夹查看 *-fs8")

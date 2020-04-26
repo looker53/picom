@@ -186,17 +186,31 @@ from setuptools import setup, find_packages
 setup(
     name='picom',
     version='0.1',
-    packages=find_packages(),
-    include_package_data=True,
     install_requires=[
         'Click',
         'requests'
     ],
-    entry_points='''
-        [console_scripts]
-        picom=cli:cli
-    ''',
 )
+```
+
+setup.cfg 配置文件：
+```
+[metadata]
+name = picom
+description = A app to compress images.
+
+[options]
+packages = find:
+package_dir = = src
+include_package_data = true
+python_requires = >= 3.6
+
+[options.packages.find]
+where = src
+
+[options.entry_points]
+console_scripts =
+    picom = picom.cli:cli
 ```
 
 把 picom 模块放入依赖包路径，执行 `pip install --editable .` 可以安装这个模块。
